@@ -21,9 +21,9 @@ public class CustomUserDetailsService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		//適切なユーザーを返す. user:tom, pass:password
 		//customUserDetails でラッピングされた値と、入力値を比較？
-		if("tom".equals(username)) {
-			return new CustomUserDetails("tom", "password", Collections.emptyList());
-		}
+//		if("tom".equals(username)) {
+//			return new CustomUserDetails("tom", "password", Collections.emptyList());
+//		}
 		
 		return repo.findByUsername(username)
 				.map(user -> 
