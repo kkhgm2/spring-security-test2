@@ -16,3 +16,4 @@ public @interface UniquUsername {
 	Class<?> [] groups() default {};
 	Class<? extends Payload> [] payload() default{};
 }
+

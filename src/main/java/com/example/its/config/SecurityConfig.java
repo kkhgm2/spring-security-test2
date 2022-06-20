@@ -26,6 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     	http
                 .authorizeRequests()
+//                アドミンユーザーのみ以下のパスwebリソースにアクセス可能とする
+                .mvcMatchers("/users/**").hasAuthority("ADMIN")
 //                認証不要（ログインページは誰でもログイン可能）
                 .mvcMatchers("/login/**").permitAll()
 //                それ以外は認証が必要
