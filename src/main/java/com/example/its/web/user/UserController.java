@@ -40,12 +40,12 @@ public class UserController {
     @PostMapping
     public String create(@Validated UserForm form, BindingResult bindingResult) { 
     	if(bindingResult.hasErrors()) {
+    		System.out.println(form.toString());
     		return showcreationForm(form);
     	}
     	
-    	service.create(form.getUsername(), form.getPassword());
+    	service.create(form.getUsername(), form.getPassword(), form.getAuthority());
     	
-    	System.out.println(form.toString());
  
     	return "redirect:/users";
     }

@@ -19,4 +19,8 @@ public class UserForm {
 	@NotBlank
 	@Size(min=12, max = 128)
 	private String password;
+
+	@NotBlank
+	private String authority;
+	
 }
