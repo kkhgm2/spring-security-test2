@@ -1,20 +1,16 @@
 package com.example.its.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
-    @Override
     //ログインは認証不要、ログインページを指定する
-    public void configure(HttpSecurity http) throws Exception{
+	@Bean
+    public SecurityFilterChain configure(HttpSecurity http) throws Exception{
 
         //h2-console を対象外にする
         http
@@ -38,19 +34,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .usernameParameter("aaaa") loginForm のパラメータ名を設定可能
                 .loginPage("/login");
         
+    	return http.build(); 
         
     }
     
-    @Autowired
-    private UserDetailsService userDetailsService;
-    
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    	// 実装したuserDetailsService を使用するため、設定
-    	auth.userDetailsService(userDetailsService)
-    		.passwordEncoder(passwordEncoder);
-    }
+//    @Autowired
+//    private UserDetailsService userDetailsService;
+//    
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
+//
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//    	// 実装したuserDetailsService を使用するため、設定
+//    	auth.userDetailsService(userDetailsService)
+//    		.passwordEncoder(passwordEncoder);
+//    }
 }
