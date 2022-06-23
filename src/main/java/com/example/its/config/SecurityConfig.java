@@ -29,6 +29,9 @@ public class SecurityConfig {
 //                それ以外は認証が必要
                 .anyRequest().authenticated()
                 .and()
+                .oauth2Login()
+                .loginPage("/login")
+                .and()
                 //ログインページの指定
                 .formLogin()
 //                .usernameParameter("aaaa") loginForm のパラメータ名を設定可能
