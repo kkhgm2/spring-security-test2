@@ -18,7 +18,7 @@ public class IndexController {
 //    	System.out.println(googleUser.getEmail());
 //    	System.out.println(googleUser.getFullName());
 		
-		System.out.println(springUser.getUsername());
+//		System.out.println(springUser.getUsername());
     	return "index";
     }
 
